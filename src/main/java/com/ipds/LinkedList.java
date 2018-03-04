@@ -1,7 +1,5 @@
 package com.ipds;
 
-import sun.awt.image.ImageWatched;
-
 public class LinkedList<V> {
 
 	private LinkedListNode<V> head;
@@ -9,6 +7,10 @@ public class LinkedList<V> {
 	private int counter;
 
 	LinkedList() {}
+
+	private LinkedList( LinkedListNode<V> head ) {
+		this.head = head;
+	}
 
 	public int size() {
 		return counter;
@@ -80,11 +82,10 @@ public class LinkedList<V> {
 		if ( head != null ) {
 			Stack<LinkedListNode<V>> stack = new Stack<>();
 			LinkedListNode<V> current = head;
-			while ( current.next != null ) {
+			while ( current != null ) {
 				stack.push( current );
 				current = current.next;
 			}
-			stack.push( current );
 			LinkedListNode<V> newHead = stack.pop();
 			LinkedListNode<V> tracker = newHead;
 			while ( !stack.empty() ) {
@@ -94,6 +95,21 @@ public class LinkedList<V> {
 			}
 			head = newHead;
 		}
+	}
+
+	public LinkedList<V> cloneAndReverse() {
+		if ( head != null ) {
+			LinkedListNode<V> current = head;
+			LinkedListNode<V> newHead = null;
+			while ( current != null ) {
+				final LinkedListNode<V> newNode = new LinkedListNode<>( current.getItem() );
+				newNode.next = newHead;
+				newHead = newNode;
+				current = current.next;
+			}
+			return new LinkedList<>( newHead );
+		}
+		return new LinkedList<>(  );
 	}
 
 	private static class LinkedListNode<V> {

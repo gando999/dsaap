@@ -72,4 +72,18 @@ public class TestLinkedList {
 		assertEquals( "test2", linkedList.get( 2 ) );
 		assertEquals( "test1", linkedList.get( 3 ) );
 	}
+
+	@Test
+	public void testCloneAndReverse() {
+		final LinkedList<String> linkedList = new LinkedList<>();
+		linkedList.add( "test1" );
+		linkedList.add( "test2" );
+		linkedList.add( "test3" );
+		linkedList.add( "test4" );
+		final LinkedList<String> reversed = linkedList.cloneAndReverse();
+		assertEquals( "test4", reversed.get( 0 ) );
+		assertEquals( "test3", reversed.get( 1 ) );
+		assertEquals( "test2", reversed.get( 2 ) );
+		assertEquals( "test1", reversed.get( 3 ) );
+	}
 }
