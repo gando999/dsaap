@@ -77,21 +77,23 @@ public class LinkedList<V> {
 	}
 
 	public void reverse() {
-		Stack<LinkedListNode<V>> stack = new Stack<>();
-		LinkedListNode<V> current = head;
-		while ( current.next != null ) {
+		if ( head != null ) {
+			Stack<LinkedListNode<V>> stack = new Stack<>();
+			LinkedListNode<V> current = head;
+			while ( current.next != null ) {
+				stack.push( current );
+				current = current.next;
+			}
 			stack.push( current );
-			current = current.next;
+			LinkedListNode<V> newHead = stack.pop();
+			LinkedListNode<V> tracker = newHead;
+			while ( !stack.empty() ) {
+				final LinkedListNode<V> popped = stack.pop();
+				tracker.next = popped;
+				tracker = popped;
+			}
+			head = newHead;
 		}
-		stack.push( current );
-		LinkedListNode<V> newHead = stack.pop();
-		LinkedListNode<V> tracker = newHead;
-		while ( !stack.empty() ) {
-			final LinkedListNode<V> popped = stack.pop();
-			tracker.next = popped;
-			tracker = popped;
-		}
-		head = newHead;
 	}
 
 	private static class LinkedListNode<V> {
