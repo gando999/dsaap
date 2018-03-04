@@ -86,4 +86,20 @@ public class TestLinkedList {
 		assertEquals( "test2", reversed.get( 2 ) );
 		assertEquals( "test1", reversed.get( 3 ) );
 	}
+
+	@Test
+	public void testGetItemFromEnd() {
+		final LinkedList<String> linkedList = new LinkedList<>();
+		linkedList.add( "test1" );
+		linkedList.add( "test2" );
+		linkedList.add( "test3" );
+		linkedList.add( "test4" );
+		linkedList.add( "test5" );
+		linkedList.add( "test6" );
+		linkedList.add( "test7" );
+		linkedList.add( "test8" );
+		assertEquals( "test6", linkedList.getItemFromEnd( 2 ) );
+		assertEquals( "test7", linkedList.getItemFromEnd( 1 ) );
+		assertEquals( "test3", linkedList.getItemFromEnd( 5 ) );
+	}
 }

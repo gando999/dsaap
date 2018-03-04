@@ -109,7 +109,20 @@ public class LinkedList<V> {
 			}
 			return new LinkedList<>( newHead );
 		}
-		return new LinkedList<>(  );
+		return new LinkedList<>();
+	}
+
+	public V getItemFromEnd( int k ) {
+		LinkedListNode<V> backRunner = head;
+		LinkedListNode<V> tracker = head;
+		for ( int i = 0; i <= k; i++ ) {
+			tracker = tracker.next;
+		}
+		while ( tracker != null ) {
+			tracker = tracker.next;
+			backRunner = backRunner.next;
+		}
+		return backRunner.getItem();
 	}
 
 	private static class LinkedListNode<V> {
