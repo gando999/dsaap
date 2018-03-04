@@ -58,4 +58,18 @@ public class TestLinkedList {
 		assertEquals( "test3", linkedList.remove( 1 ) );
 		assertEquals( 2, linkedList.size() );
 	}
+
+	@Test
+	public void testReverse() {
+		final LinkedList<String> linkedList = new LinkedList<>();
+		linkedList.add( "test1" );
+		linkedList.add( "test2" );
+		linkedList.add( "test3" );
+		linkedList.add( "test4" );
+		linkedList.reverse();
+		assertEquals( "test4", linkedList.get( 0 ) );
+		assertEquals( "test3", linkedList.get( 1 ) );
+		assertEquals( "test2", linkedList.get( 2 ) );
+		assertEquals( "test1", linkedList.get( 3 ) );
+	}
 }
