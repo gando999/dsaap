@@ -10,3 +10,4 @@ Basic data structure implementations
 * Queue
 * Binary Tree
 * Graph
+* Trie
