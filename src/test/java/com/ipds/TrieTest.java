@@ -36,4 +36,16 @@ public class TrieTest {
 		assertFalse( trie.find( "Hands" ) );
 	}
 
+	@Test
+	public void testDelete() {
+		trie.insert( "Happy" );
+		trie.insert( "Shiny" );
+		trie.insert( "People" );
+		assertTrue( trie.find( "Shiny" ) );
+		assertTrue( trie.find( "Happy" ) );
+		assertTrue( trie.find( "People" ) );
+		trie.delete( "Happy" );
+		assertFalse( trie.find( "Happy" ) );
+	}
+
 }
